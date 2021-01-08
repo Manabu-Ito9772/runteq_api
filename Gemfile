@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 
 gem 'fast_jsonapi'
+gem 'sorcery'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

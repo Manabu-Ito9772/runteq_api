@@ -12,7 +12,8 @@ module Api
       end
 
       def show
-        json_string = ArticleSerializer.new(@article).serialized_json
+        options = { include: %i[user 'user.name' 'user.email'] }
+        json_string = ArticleSerializer.new(@article, options).serialized_json
         render json: json_string
       end
 
