@@ -24,7 +24,7 @@ module Api
           ]
         }
 
-        render json: response, status: 400
+        render json: response, status: :bad_request
       end
     end
   end
