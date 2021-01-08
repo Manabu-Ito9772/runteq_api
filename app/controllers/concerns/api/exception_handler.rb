@@ -10,7 +10,7 @@ module Api::ExceptionHandler
   private
 
   def render_400(exception = nil, messages = nil)
-    render_error(400, 'Bad Request', exception&.message, *messages)
+    render_error(400, 'Bad Request', exception&.message)
   end
 
   def render_404(exception = nil, messages = nil)
