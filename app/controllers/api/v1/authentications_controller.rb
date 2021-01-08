@@ -8,10 +8,6 @@ module Api
         json_string = UserSerializer.new(@user).serialized_json
         render json: json_string
       end
-
-      private
-
-      def form_authenticity_token; end
     end
   end
 end
