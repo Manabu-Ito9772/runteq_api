@@ -7,11 +7,11 @@ RSpec.describe 'Api::V1::Authentications', type: :request do
       it 'returns user in json format' do
         request_hash = { headers: { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' }, params: { email: user.email, password: password }.to_json }
         post api_v1_authentication_path, request_hash
-
         expect(body['data']['id'].to_i).to eq(user.id)
         expect(body['data']['type']).to eq('user')
         expect(body['data']['attributes']['name']).to eq(user.name)
         expect(body['data']['attributes']['email']).to eq(user.email)
+        expect(response.headers['AccessToken']).to be_present
         expect(response).to be_successful
         expect(response).to have_http_status(200)
       end

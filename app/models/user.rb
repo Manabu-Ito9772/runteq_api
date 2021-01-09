@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
   has_many :api_keys, dependent: :destroy
 
-  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 end

@@ -6,6 +6,7 @@ module Api
 
         if @user.save
           @user.api_keys.create
+          response.set_header('AccessToken', 'hello')
           json_string = UserSerializer.new(@user).serialized_json
           render json: json_string
         else
