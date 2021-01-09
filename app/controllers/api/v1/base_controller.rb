@@ -6,20 +6,26 @@ module Api
       include Api::ExceptionHandler
       include ActionController::HttpAuthentication::Token::ControllerMethods
 
+      protected
+
+      def authenticate
+        authenticate_or_request_with_http_token do |token, _options|
+          @_current_user ||= ApiKey.active.find_by(access_token: token)&.user
+        end
+      end
+
       def current_user
         @_current_user
+      end
+
+      def set_access_token!(user)
+        api_key = user.activate_api_key!
+        response.headers['AccessToken'] = api_key.access_token
       end
 
       private
 
       def form_authenticity_token; end
-
-      def authenticate_token
-        @_current_user = ApiKey.find_by(access_token: '64a8f3aefc9c98b83cf80d363635d3c3').user
-        authenticate_or_request_with_http_token do |access_token|
-          access_token == @_current_user.api_keys.active.first.access_token
-        end
-      end
     end
   end
 end
