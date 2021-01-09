@@ -1,15 +1,13 @@
 class ApiKey < ApplicationRecord
-  before_validation :generate_access_token_and_expiration
   belongs_to :user
 
   validates :access_token, presence: true, uniqueness: true
 
-  def expired?
-    DateTime.now > expires_at
-  end
+  scope :active, -> { where('expires_at >= ?', Time.current) }
 
-  def generate_access_token_and_expiration
+  def initialize(attributes = {})
+    super
     self.access_token = SecureRandom.hex
-    self.expires_at = DateTime.now + 7
+    self.expires_at = 1.week.after
   end
 end

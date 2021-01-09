@@ -7,4 +7,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+
+  def activate_api_key!
+    return api_keys.active.first if api_keys.active.exists?
+
+    api_keys.create
+  end
 end

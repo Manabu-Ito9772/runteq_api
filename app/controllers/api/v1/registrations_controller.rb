@@ -5,9 +5,9 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          @user.api_keys.create
-          response.set_header('AccessToken', 'hello')
           json_string = UserSerializer.new(@user).serialized_json
+          api_key = @user.activate_api_key!
+          response.headers['AccessToken'] = api_key.access_token
           render json: json_string
         else
           render_400(nil, @user.errors.full_messages)
