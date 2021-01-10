@@ -51,7 +51,7 @@ module Api
           success: 'The article has been deleted'
         }
 
-        render json: response, status: 200
+        render json: response, status: :ok
       end
 
       private

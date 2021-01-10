@@ -6,6 +6,7 @@ RSpec.describe 'Api::V1::Registrations', type: :request do
       let(:user_attributes) { attributes_for(:user) }
       it 'returns user in json format' do
         post api_v1_registration_path, request_hash
+        byebug
         expect(body['data']['type']).to eq('user')
         expect(body['data']['attributes']['name']).to eq(user_attributes[:name])
         expect(body['data']['attributes']['email']).to eq(user_attributes[:email])
@@ -22,6 +23,7 @@ RSpec.describe 'Api::V1::Registrations', type: :request do
 
         expect(body['message']).to eq('Bad Request')
         expect(body['errors'].count).to eq(2)
+        expect(response.headers['AccessToken']).to be_blank
         expect(response).to have_http_status(400)
       end
     end

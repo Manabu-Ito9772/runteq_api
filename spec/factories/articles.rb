@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :article do
-    user_id { 1 }
+    user
     sequence(:title) { |n| "MyString#{n}" }
     sequence(:contents) { |n| "MyText#{n}" }
-    status { 0 }
+    status { Article.statuses.keys.first }
   end
 end
