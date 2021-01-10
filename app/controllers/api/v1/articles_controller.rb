@@ -4,7 +4,6 @@ module Api
   module V1
     class ArticlesController < BaseController
       before_action :set_article, only: :show
-      before_action :authenticate
 
       def index
         articles = Article.all
