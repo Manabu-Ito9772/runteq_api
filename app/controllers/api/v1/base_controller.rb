@@ -5,7 +5,7 @@ module Api
     class BaseController < ApplicationController
       include Api::ExceptionHandler
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      
+
       before_action :authenticate
 
       protected
