@@ -1,4 +1,4 @@
-RSpec.describe 'Api::ExceptionHandler', type: :request do
+RSpec.describe 'Api::ExceptionHandler', type: :request, autodoc: true do
   let!(:user) { create(:user) }
   let!(:api_key) { create(:api_key, user: user) }
 

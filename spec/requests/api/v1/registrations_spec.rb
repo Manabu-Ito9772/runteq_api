@@ -1,4 +1,4 @@
-RSpec.describe 'Api::V1::Registrations', type: :request do
+RSpec.describe 'Api::V1::Registrations', type: :request, autodoc: true do
   let(:request_hash) { { headers: { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' }, params: { user: user_attributes }.to_json } }
 
   describe 'POST /registrations' do

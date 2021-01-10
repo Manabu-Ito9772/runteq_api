@@ -1,4 +1,4 @@
-RSpec.describe 'Api::V1::Authentications', type: :request do
+RSpec.describe 'Api::V1::Authentications', type: :request, autodoc: true do
   let(:password) { 'password' }
   let!(:user) { create(:user, password: password) }
 

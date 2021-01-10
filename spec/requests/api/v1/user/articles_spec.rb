@@ -1,4 +1,4 @@
-RSpec.describe 'Api::V1::User::Articles', type: :request do
+RSpec.describe 'Api::V1::User::Articles', type: :request, autodoc: true do
   let!(:user) { create(:user) }
   let!(:another_user) { create(:user) }
   let(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }

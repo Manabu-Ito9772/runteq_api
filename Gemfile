@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'fast_jsonapi'
 gem 'sorcery'
+gem 'autodoc'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
