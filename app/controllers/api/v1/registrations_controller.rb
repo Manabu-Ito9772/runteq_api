@@ -2,7 +2,7 @@ module Api
   module V1
     class RegistrationsController < BaseController
       def create
-        @user = User.new(user_params)
+        @user = ::User.new(user_params)
 
         if @user.save
           json_string = UserSerializer.new(@user).serialized_json
